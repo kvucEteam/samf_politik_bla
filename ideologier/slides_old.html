@@ -1,0 +1,197 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>templates</title>
+		<meta name="author" content="ato" />
+		<link rel="stylesheet" href="style.css" type="text/css" />
+		<script src="jquery-1.7.2.min.js"></script>
+		<!-- Date: 2012-08-07 -->
+	
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor msdt:dt="string">Anders Tornøe</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor>
+<mso:xd_Signature msdt:dt="string"></mso:xd_Signature>
+<mso:Order msdt:dt="string">8500.00000000000</mso:Order>
+<mso:TemplateUrl msdt:dt="string"></mso:TemplateUrl>
+<mso:xd_ProgID msdt:dt="string"></mso:xd_ProgID>
+<mso:PublishingStartDate msdt:dt="string"></mso:PublishingStartDate>
+<mso:PublishingExpirationDate msdt:dt="string"></mso:PublishingExpirationDate>
+<mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Author msdt:dt="string">Anders Tornøe</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Author>
+<mso:ContentTypeId msdt:dt="string">0x0101005C213CC3A844A349B3DE07AE131E1E0B</mso:ContentTypeId>
+<mso:_SourceUrl msdt:dt="string"></mso:_SourceUrl>
+<mso:_SharedFileIndex msdt:dt="string"></mso:_SharedFileIndex>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+	<body>
+		<div id="container">
+			<div id="window" class ="shadow">
+				<div id="top"></div>
+				<div id ="popud" class ="popud">
+					
+				</div>
+				<div id ="bund">
+					<div class="f_container">
+						<br/>
+						<form>
+							<input type="radio" id ="kons" name="parti" value="kons" />
+							Konservatisme
+							<input type="radio" id ="soc" name="parti" value="soc" />
+							Socialisme
+							<input type="radio" id ="lib" name="parti" value="lib" />
+							Liberalisme
+						</form>
+					</div>
+					<div class ="f_container f_width">
+						<br/>
+						<button class="btn1">
+							Tjek dit svar
+						</button>
+					</div>
+				</div>
+				<div class="imageBundle" id = "imgBundle" ></div>
+			</div>
+		</div>
+	</body>
+	<script>
+		var all;
+		var pct;
+
+		var answered = false;
+		// Load billeder :
+		var images = new Array();
+		var score = 0;
+		var data_Array = [[('pics/kons.jpg'), ('kons'), ('Lars Barfod er formand for det konservative folkeparti')], [('pics/kons_1.jpg'), ('kons'), ('Mest konservatisme: Tøjstilen er klassisk borgerlig.')], [('pics/kons_2.jpg'), ('kons'), ('Konservatisme: Kostskolerne kan være bærere af traditionelle konservative dyder.')], [('pics/kons_3.jpg'), ('kons'), ('Konservatisme: Kongehuset er en institution der samler befolkningen.')], [('pics/kons_4.jpg'), ('kons'), ('Mest konservatisme: Et stærkt forsvar har altid været en vigtig institution til bevarelse af nationen.')], [('pics/kons_5.jpg'), ('kons'), ('Konservatisme: En traditionel konservativ højborg.')], [('pics/kons_6.jpg'), ('kons'), ('Konservatisme: Billedet udtrykker klassiske konservative værdier.')], [('pics/lib.jpg'), ('lib'), ('Venstres formand Lars Løkke Rasmussen')], [('pics/lib_2.jpg'), ('kons'), ('Konservatisme: godsejerne har traditionelt stemt på det Konservative Folkeparti.')], [('pics/lib_3.jpg'), ('lib'), ('Liberalisme: Færre regler betyder mere frihed for individet. ')], [('pics/lib_4.jpg'), ('lib'), ('Liberalisme: Landmanden er en typisk repræsentant for det frie erhverv.')], [('pics/lib_5.jpg'), ('lib'), ('Liberalisme: Flere privathospitaler øger konkurrencen og det frie valg.')], [('pics/lib_6.jpg'), ('lib'), ('Liberalisme: De liberale partier står stærkest i Jylland – bl.a i Herning.')], [('pics/lib_7.jpg'), ('lib'), ('Liberalisme: Privatbilismen er en liberalistisk mærkesag. Flere motorveje øger den individuelle bevægelsesfrihed.')], [('pics/soc.jpg'), ('soc'), ('Socialisme: Villy Søvndal er formand for Socialistisk Folkeparti')], [('pics/soc_1.jpg'), ('soc'), ('Socialisme: Oprindelig var vedvarende energi en socialistisk mærkesag.  Men i dag er de fleste partier/vælgere tilhængere af vedvarende energi')], [('pics/soc_2.jpg'), ('soc'), ('Socialisme: At styrke den kollektive trafik vil bl.a. øge mobiliteten for dem der ikke har en bil.')], [('pics/soc_3.jpg'), ('soc'), ('Socialisme: De fleste socialister er imod brugerbetaling')], [('pics/soc_4.jpg'), ('soc'), ('Socialisme: Goderne skal fordeles retfærdigt.')], [('pics/soc_5.jpg'), ('soc'), ('Socialisme: Arbejdere markerer arbejdernes internationale kampdag. En del arbejdere er i dag blevet mere borgerlige.')], [('pics/soc_6.jpg'), ('soc'), ('Socialisme: (Mere) lighed er et vigtigt mål.')], [('pics/soc_7.jpg'), ('soc'), ('Socialisme: Det røde flag og den knyttede arbejderhånd er symbolet på den solidariske kamp for mere lighed og retfærdighed.')], [('pics/soc_8.jpg'), ('soc'), ('Socialisme: Ungdomshuset og dets idealer har især opbakning fra socialister.')], [('pics/soc_9.jpg'), ('soc'), ('Socialisme: I denne bydel har ca. 2/3 af vælgerne et socialistisk udgangspunkt')]];
+		//var values = ['kons', 'lib', 'soc'];
+		data_Array.sort(function() {
+			return 0.5 - Math.random()
+		});
+		//skub billeder til images Array:
+
+		for(var i = 0; i < data_Array.length; i++) {
+			images.push(data_Array[i][0])
+		}
+		//alert(images);
+
+		document.getElementById("imgBundle").innerHTML = '<div id = "none" class = "none">' + document.getElementById("imgBundle").innerHTML + '</div>';
+
+		$(images).each(function() {
+			var image = $('<img />').attr('src', this).appendTo('.none');
+		});
+		// get value from radioBtns:
+
+		var radiosvar = document.getElementsByName("parti");
+		document.getElementById("top").innerHTML = "<p>[1 / " + data_Array.length + "] Din score: 0%</p>";
+		// + score + " ud af " + all; // + images.length();
+
+		// lyt efter ændring i r_buttons:
+		$("input[name=parti]:radio").change(function() {
+			//alert ("cahnge");
+			var img = document.getElementsByTagName("img");
+
+			if($("#lib").attr("checked")) {
+				$(img[runde]).css('border', 'solid 3px #8798a6');
+
+			} else if($("#soc").attr("checked")) {
+				$(img[runde]).css('border', 'solid 3px #805751');
+
+			} else if($("#kons").attr("checked")) {
+				$(img[runde]).css('border', 'solid 3px #6f8051');
+			}
+
+
+
+			//.innerHTML = "<p> farvel </p>";
+			//alert (img[runde].innerHTML);
+
+		});
+		//Tween billeder ved klik på 'gæt knappen'
+
+		var runde = 0;
+		
+	$('.popud').toggle();
+
+		//alert(runde + "," + values.length);
+		$(".btn1").click(function() {
+
+			var mydiv = document.getElementsByTagName("img");
+
+			var curr_width = mydiv[runde].width;
+			//alert(curr_width);
+
+			for(var i = 0; i < radiosvar.length; i++) {
+				if(radiosvar[i].checked) {
+
+					if(radiosvar[i].value == data_Array[runde][1]) {
+						// hvis rigtigt svar:
+						document.getElementById("popud").innerHTML = "Svaret er rigtigt! <br/>" + data_Array[runde][2] + "<br/>(Klik for at gå videre)";
+						//alert ("runde op!");
+
+						score++;
+						//alert(data_Array[runde][2]);
+					} else {
+
+						document.getElementById("popud").innerHTML = "Det er desværre ikke rigtigt! <br/>" + data_Array[runde][2] + "<br/>(Klik for at gå videre)";
+
+					}
+					runde++;
+					if (runde == 1){
+						$('.popud').toggle();
+						
+					}
+					all = images.length;
+					pct = Math.round((score / runde) * 100);
+					document.getElementById("top").innerHTML = "<p>[" + (runde + 1) + " / " + data_Array.length + "] Din score: " + pct + "%</p>";
+					radiosvar[i].checked = false;
+
+					$(".none").animate({
+						opacity : 0.30,
+					});
+
+					$(".popud").animate({
+						opacity : 1,
+					});
+
+					$('#bund').toggle();
+
+					$(".popud").click(function() {
+						var width = $('#window').width();
+						//alert (width);
+						$(".popud").unbind("click");
+						
+						if(answered == false) {
+							answered = true;
+							//alert(runde);
+
+							if(runde < images.length - 1) {
+								$('#bund').toggle();
+
+								$(".popud").animate({
+									opacity : 0,
+								});
+
+								$(".none").animate({
+									opacity : 0.30,
+									left : "-=" + width+"px",
+								}, 500, function() {
+									answered = false;
+									$(".none").animate({
+										opacity : 1
+
+									});
+								});
+							} else {
+								document.getElementById("popud").innerHTML = "<p> Opgaven er færdig.<br/> Du havde <b>" + score + "</b> rigtige ud af <b>" + all + "</b> spørgsmål. Din samlede score er: " + pct + "% <br/> <p> Opgaven benytter billeder, som vi fortolker på en firkantet og karikeret facon. Virkeligheden kan sagtens være mere nuanceret. <br/> Men ved at opdele personer og figurer i bestemte kasser, er det muligt at tydeliggøre forskellige værdier og holdninger. </p><a href='javascript: window.location.reload()'>Klik her for at prøve igen</a>";
+							}
+						}
+					});
+				}
+
+			}
+
+		});
+
+	</script>
+</html>

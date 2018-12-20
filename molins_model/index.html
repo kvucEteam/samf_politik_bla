@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+
+<head>
+    <title>Molins model</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="../../library/css/styles.css" type="text/css" />
+    <script src="../../library/vendor_scripts.js"></script>
+    <script src="../../library/custom_scripts.js"></script>
+    <link rel="stylesheet" href="molin.css" type="text/css" />
+    </script>
+    <!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor msdt:dt="string">LAKA</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor>
+<mso:xd_Signature msdt:dt="string"></mso:xd_Signature>
+<mso:Order msdt:dt="string">8200.00000000000</mso:Order>
+<mso:TemplateUrl msdt:dt="string"></mso:TemplateUrl>
+<mso:xd_ProgID msdt:dt="string"></mso:xd_ProgID>
+<mso:PublishingStartDate msdt:dt="string"></mso:PublishingStartDate>
+<mso:PublishingExpirationDate msdt:dt="string"></mso:PublishingExpirationDate>
+<mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Author msdt:dt="string">LAKA</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Author>
+<mso:ContentTypeId msdt:dt="string">0x0101005F626C4120C0E143BCA43D516351053B</mso:ContentTypeId>
+<mso:_SourceUrl msdt:dt="string"></mso:_SourceUrl>
+<mso:_SharedFileIndex msdt:dt="string"></mso:_SharedFileIndex>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+
+<body>
+    <div class="container-fluid">
+        <h1>Molins Model</h1>
+        <div class="instruction"></div>
+        <div id="explanationwrapper"></div>
+        <div class="col-xs-12">
+            <!--<div class="logohider"><h1>Molins model</h1></div>!-->
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="molin.html" allowfullscreen></iframe>
+            </div>
+        </div>
+        <script>
+        $('.instruction').append(instruction("Klik på kasserne i Molins model og lær politikernes valg af standpunkt."));
+
+        $("#explanationwrapper").html(explanation("Modellen fokuserer på de faktorer, der har indflydelse på politikernes holdning. Det er ikke en decideret forklaringsmodel, men kan fungere som skema, når et partis stillingtagen til en bestemt politisk problemstilling skal undersøges."));
+        one_line_footer();
+
+        function msieversion() {
+
+            var ua = window.navigator.userAgent;
+            var msie = ua.indexOf("MSIE ");
+
+            if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)) // If Internet Explorer, return version number
+            {
+                UserMsgBox("body", "<h2>Beklager</h2>Dette objekt virker desværre ikke i Internet Explorer. <br/>Benyt venligst en anden browser.");
+            } else // If another browser, return 0
+            {
+
+            }
+
+            return false;
+        }
+
+        msieversion();
+        </script>
+    </div>
+    </div>
+</body>
+
+</html>

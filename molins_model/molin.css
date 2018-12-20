@@ -1,0 +1,13 @@
+.logohider{
+    position: absolute;
+    background-color: white;
+    top: 51px;
+    left: 215px;
+    z-index: 50;
+    -ms-transform: rotate(20deg);
+    -webkit-transform: rotate(20deg);
+    transform: rotate(3deg);
+    width: 290px;
+    height: 40px;
+}
+
